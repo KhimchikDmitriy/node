@@ -5,14 +5,12 @@ import { join } from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
-import fse from "fs-extra/esm";
+import ejs from "ejs";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = "3000";
 const currentTime = new Date().toLocaleString();
 
-const content =
-  currentTime + ", логгируем ping по адресу " + "localhost:" + port + "/";
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, "public")));
@@ -23,23 +21,22 @@ app.listen(port, () => {
   console.log("...");
   console.log("начинается логгирование");
   console.log("...");
-  fs.access("xxx.txt", fs.constants.F_OK, (err) => {
-    if (err) {
-      fs.writeFile("xxx.txt", content, () => {
-        console.log("логгирование завершено.");
-      });
-    } else {
-      fs.appendFile("xxx.txt", `\n${content}`, () => {
-        console.log("логгирование завершено.");
-      });
-    }
-  });
+  addline("server started");
+  console.log("логгирование завершено");
+  console.log("...");
+  console.log("в данный момент используется версия " + app.get("env"));
 });
 app.get("/as", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
+  addline("logging completes /as");
+});
+app.get("/", (req, res) => {
+  res.end("dea ex machina");
+  addline("logging completes /");
 });
 app.get("/test", (req, res) => {
   res.end("deus ex machina");
+  addline("logging completes /test");
 });
 app.post("/as", (req, res) => {
   console.log("...");
@@ -50,7 +47,7 @@ app.post("/as", (req, res) => {
   console.log("name: " + req.body.name);
   res.end("проверка post пройдена.");
 });
-app.post("/", (req, res) => {
+app.post("/test", (req, res) => {
   console.log("...");
   console.log("проверка post пройдена");
   console.log("...");
@@ -60,3 +57,25 @@ app.post("/", (req, res) => {
   console.log("name: " + req.body.name);
   res.end("проверка post пройдена.");
 });
+function addline(line) {
+  line = line + " timestamp: " + currentTime + "\n";
+  fs.appendFile(__dirname + "/logger/logger.txt", line, (err) => {
+    if (err) return console.log(err);
+  });
+}
+// error handler
+app.use((req, res, next) => {
+  const err = new Error("наша ошибка");
+  err.status = 404;
+  console.log(err);
+  next(err);
+});
+//production error handler
+app.get("env") == "production";
+console.log("переход на " + app.get("env"));
+if (app.get("env") != "development") {
+  app.use((err, req, res, next) => {
+    res.status = 404;
+    res.render(__dirname + "/views/error.html");
+  });
+}
