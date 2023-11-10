@@ -4,3 +4,7 @@
 .eve_txt {
   color: coral;
 }
+.err {
+  display: flex;
+  color: brown;
+}

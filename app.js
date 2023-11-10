@@ -11,10 +11,13 @@ const app = express();
 const port = "3000";
 const currentTime = new Date().toLocaleString();
 
+app.set("view engine", "ejs");
+app.set("\views", __dirname + "views");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, "public")));
-app.use(favicon(join(__dirname, "/public/ico.png")));
+app.use(favicon(join(__dirname, "/public/img/ico.png")));
 app.listen(port, () => {
   console.log("...");
   console.log("проверка console.log пройдена");
@@ -65,17 +68,30 @@ function addline(line) {
 }
 // error handler
 app.use((req, res, next) => {
-  const err = new Error("наша ошибка");
+  const err = new Error("какая-то непонятная ошибка ошибка");
   err.status = 404;
-  console.log(err);
   next(err);
 });
 //production error handler
 app.get("env") == "production";
 console.log("переход на " + app.get("env"));
+
 if (app.get("env") != "development") {
   app.use((err, req, res, next) => {
+    // err.status = 400;
+    res.render("error.ejs", { error: err.message, status: err.status });
+  });
+} else {
+  app.use((err, req, res, next) => {
     res.status = 404;
-    res.render(__dirname + "/views/error.html");
+    console.log("! ! !");
+    console.log("! ! !");
+    console.log("! ! !");
+    console.log("ошибка " + res.status);
+    console.log("! ! !");
+    console.log(app.get);
+    console.log("! ! !");
+    console.log(err.message);
+    res.end("GOVNOKOD!");
   });
 }
