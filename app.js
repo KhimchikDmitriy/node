@@ -17,7 +17,20 @@ app.set("\views", __dirname + "views");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, "public")));
+app.use(
+  "/bootstrap.css",
+  express.static(
+    join(__dirname, "public/css/bootstrap-5.3.2/dist/css/bootstrap.css")
+  )
+);
+app.use(
+  "/bootstrap.js",
+  express.static(
+    join(__dirname, "public/css/bootstrap-5.3.2/dist/js/bootstrap.js")
+  )
+);
 app.use(favicon(join(__dirname, "/public/img/ico.png")));
+
 app.listen(port, () => {
   console.log("...");
   console.log("проверка console.log пройдена");
@@ -29,6 +42,7 @@ app.listen(port, () => {
   console.log("...");
   console.log("в данный момент используется версия " + app.get("env"));
 });
+
 app.get("/as", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
   addline("logging completes /as");
