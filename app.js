@@ -105,6 +105,12 @@ const User = sequelize.define("user", {
     allowNull: false,
   },
 });
+sequelize
+  .sync()
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => console.log(err));
 
 function addline(line) {
   line = line + " timestamp: " + currentTime + "\n";
