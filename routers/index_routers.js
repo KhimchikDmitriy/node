@@ -4,9 +4,10 @@ import favicon from "express-favicon";
 import { join } from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+// import Sequelize from "sequelize";
 import fs from "fs";
 import ejs from "ejs";
-const __dirname = dirname(fileURLToPath(import.meta.url));
+// const __dirname = dirname(fileURLToPath(import.meta.url));
 const router = express.Router();
 
 router.get("/", (req, res) => {

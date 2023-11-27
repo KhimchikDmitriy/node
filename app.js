@@ -4,6 +4,10 @@ import favicon from "express-favicon";
 import { join } from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import Sequelize from "sequelize";
+import sqlite3 from "sqlite3";
+// const db = new sqlite3.Database(":memory:");
+// import { sequelize } from './db';
 import fs from "fs";
 import ejs from "ejs";
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -14,6 +18,11 @@ import myRoutes from "./routers/index_routers.js";
 
 app.set("view engine", "ejs");
 app.set("\views", __dirname + "views");
+
+const sequelize = new Sequelize({
+  dialect: "sqlite",
+  storage: "test.sqlite",
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
