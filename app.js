@@ -111,21 +111,26 @@ sequelize
     // console.log(result);
   })
   .catch((err) => console.log(err));
-User.create({
-  name: "Tom",
-  age: 35,
-})
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => console.log(err));
-User.create({
-  name: "Bob",
-  age: 31,
-})
-  .then((res) => {
-    const user = { id: res.id, name: res.name, age: res.age };
-    console.log(user);
+// User.create({
+//   name: "Tom",
+//   age: 35,
+// })
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => console.log(err));
+// User.create({
+//   name: "Bob",
+//   age: 31,
+// })
+//   .then((res) => {
+//     const user = { id: res.id, name: res.name, age: res.age };
+//     console.log(user);
+//   })
+//   .catch((err) => console.log(err));
+User.findAll({ raw: true })
+  .then((users) => {
+    console.log(users);
   })
   .catch((err) => console.log(err));
 
