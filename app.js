@@ -24,6 +24,7 @@ app.use(
     join(__dirname, "public/css/bootstrap-5.3.2/dist/css/bootstrap.css")
   )
 );
+app.use("publics", express.static(join(__dirname, "public/")));
 app.use(
   "/bootstrap.js",
   express.static(

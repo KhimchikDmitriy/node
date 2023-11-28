@@ -16,14 +16,13 @@ router.get("/", (req, res) => {
 
 // router.post("/", (req, res) => {});
 
-// router.get("/register", (req, res) => {
-//   res.sendFile(__dirname + "/index.html");
-//   addline("logging completes /as");
-// });
+router.get("/register", (req, res) => {
+  res.sendFile(__dirname + "/vremenno/register.html");
+});
 // router.post("/register", (req, res) => {});
 
 router.get("/as", (req, res) => {
-  res.sendFile(__dirname + "/p/index.html");
+  res.sendFile(__dirname + "/vremenno/index.html");
   // addline("logging completes /as");
 });
 // app.get("/", (req, res) => {

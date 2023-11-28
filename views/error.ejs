@@ -10,16 +10,12 @@
     <link rel="stylesheet" href="./css/index.css" />
     <title>errors</title>
   </head>
-  <header><%- include('partials/header.ejs'); -%></header>
-  <body>
+  <!-- <header><%- include('partials/header.ejs'); -%></header> -->
+  <body
+    background="https://agentestudio.com/uploads/post/image/69/main_how_to_design_404_page.png"
+  >
     <h1 class="err">ERROR <% if(status){ %><%= status %> <% } %></h1>
     <h1><% if(error){ %><span> <%= error %></span> <% } %></h1>
-    <% if(status == 404){ %>
-    <img
-      src="https://agentestudio.com/uploads/post/image/69/main_how_to_design_404_page.png"
-    />
-    <% } %>
-    <p class="proverka">proverka</p>
   </body>
-  <%- include('partials/footer.ejs'); -%>
+  <!-- <%- include('partials/footer.ejs'); -%> -->
 </html>
