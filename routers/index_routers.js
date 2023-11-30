@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
 // router.post("/", (req, res) => {});
 
 router.get("/register", register.form);
-// router.post("/register", (req, res) => {});
+router.post("/register", register.submit);
 
 router.get("/as", (req, res) => {
   res.sendFile(__dirname + "/vremenno/index.html");

@@ -37,7 +37,7 @@ class User {
   static autentificate(dataForm, cb) {
     User.findByEmail(dataForm.email, (err, user) => {
       if (err) return cb(err);
-      if (!user) return cb(err);
+      if (!user) return cb();
     });
 
     const result = bcrypt.compare(dataForm.password, user.password);
