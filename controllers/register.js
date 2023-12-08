@@ -2,6 +2,8 @@ import User from "../models/user.js";
 
 const form = (req, res) => {
   res.render("registerForm", { title: "Register" });
+  console.log("...");
+  console.log("заход на /register");
 };
 const submit = (req, res, next) => {
   User.findByEmail(req.body.email, (err, user) => {

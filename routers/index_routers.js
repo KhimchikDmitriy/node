@@ -7,24 +7,18 @@ import { fileURLToPath } from "url";
 import fs from "fs";
 import ejs from "ejs";
 import register from "../controllers/register.js";
+import entries from "../controllers/entries.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const router = express.Router();
-// const login = require("../controllers/login.js");
 
 router.use(favicon(__dirname + "/favicon.ico"));
 
-router.get("/", (req, res) => {
-  res.end("gost'");
-  console.log("...");
-  console.log("заход на /");
-});
+router.get("/", entries.list);
+// router.post("/entry", entry);
 
-router.get("/entries", entries.list);
-router.post("/entry", entry);
-
-router.get("/login", login.form);
-router.post("/login", login.submit);
+// router.get("/login", login.form);
+// router.post("/login", login.submit);
 
 router.get("/register", register.form);
 router.post("/register", register.submit);
@@ -61,4 +55,4 @@ router.post("/test", (req, res) => {
 });
 
 export default router;
-// ☺☻♥♦♣♠±
+// 0177 - ±

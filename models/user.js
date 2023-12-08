@@ -1,6 +1,8 @@
 import sqlite3 from "sqlite3";
 import bcrypt from "bcrypt";
 
+sqlite3.verbose();
+
 const db = new sqlite3.Database("../test.sqlite");
 const sql =
   "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT(255) NOT NULL, email TEXT(255) NOT NULL, password TEXT(20) NOT NULL, age INTEGER NOT NULL)";
