@@ -40,11 +40,9 @@ class User {
       if (!user) return cb();
     });
 
-    const user = 0; // delete me please (@_@)'
-
     const result = bcrypt.compare(dataForm.password, user.password);
     if (result) return cb(user);
   }
 }
 
-export default {};
+export default { User };
