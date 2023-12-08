@@ -9,7 +9,7 @@ const submit = (req, res, next) => {
   User.findByEmail(req.body.email, (err, user) => {
     if (err) return next(err);
     if (!user) {
-      User.create(req.body.user, (err) => {
+      User.create(req.body, (err) => {
         if (err) return next(err);
       });
     } else {
@@ -17,6 +17,8 @@ const submit = (req, res, next) => {
     }
   });
   res.redirect("/");
+  // res.redirect(req.protocol + "://" + req.get("host") + "/");
+  // res.redirect(req.protocol + "://" + req.get("host"));
 };
 
 export default { form, submit };
