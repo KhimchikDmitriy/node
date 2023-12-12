@@ -13,12 +13,12 @@ const submit = (req, res, next) => {
         if (err) return next(err);
       });
     } else {
+      console.log("...");
       console.log("Такой пользователь уже существует!");
+      res.redirect("back");
     }
   });
   res.redirect("/");
-  // res.redirect(req.protocol + "://" + req.get("host") + "/");
-  // res.redirect(req.protocol + "://" + req.get("host"));
 };
 
 export default { form, submit };

@@ -37,6 +37,14 @@
   <body>
     <header>
       <h1>Заголовок страницы</h1>
+      <button
+        onclick="window.location.href = 'http://localhost:3000/register';"
+      >
+        Зарегестрироваться
+      </button>
+      <button onclick="window.location.href = 'http://localhost:3000/login';">
+        Войти
+      </button>
     </header>
     <div class="profile-placeholder"></div>
     <div class="card">
@@ -44,7 +52,6 @@
       <%= title %>
       <p>Текст карточки</p>
     </div>
-
     <footer>
       <p>Футер страницы</p>
     </footer>

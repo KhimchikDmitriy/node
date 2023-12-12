@@ -7,6 +7,8 @@ import { fileURLToPath } from "url";
 import fs from "fs";
 import ejs from "ejs";
 import myRoutes from "./routers/index_routers.js";
+import session from "express-session";
+import user_session from "./middleware/user_session.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -32,7 +34,9 @@ app.use(
     join(__dirname, "public/css/bootstrap-5.3.2/dist/js/bootstrap.js")
   )
 );
+app.use(session({ secret: "Hollo", resave: false, saveUninitialized: true }));
 app.use(favicon(join(__dirname, "/public/img/ico.png")));
+app.use(user_session);
 app.use(myRoutes);
 
 app.listen(port, () => {

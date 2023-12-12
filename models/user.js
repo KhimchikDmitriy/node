@@ -36,8 +36,9 @@ class User {
       if (!user) return cb();
 
       const result = await bcrypt.compare(dataForm.password, user.password);
-      if (result) return cb(user);
-      else return cb();
+      if (result) {
+        return cb(user);
+      } else return cb();
     });
   }
 }

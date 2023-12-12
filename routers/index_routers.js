@@ -8,6 +8,7 @@ import fs from "fs";
 import ejs from "ejs";
 import register from "../controllers/register.js";
 import entries from "../controllers/entries.js";
+import login from "../controllers/login.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const router = express.Router();
@@ -17,8 +18,8 @@ router.use(favicon(__dirname + "/favicon.ico"));
 router.get("/", entries.list);
 // router.post("/entry", entry);
 
-// router.get("/login", login.form);
-// router.post("/login", login.submit);
+router.get("/login", login.form);
+router.post("/login", login.submit);
 
 router.get("/register", register.form);
 router.post("/register", register.submit);
