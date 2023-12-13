@@ -1,4 +1,5 @@
 import User from "../models/user.js";
+
 const form = (req, res) => {
   res.render("login", { title: "chepokrashka" });
   console.log("...");
@@ -11,7 +12,7 @@ const submit = (req, res, next) => {
     if (!data) {
       console.log("...");
       console.log("Имя или пароль не верны!");
-      redirect("back");
+      res.redirect("back");
     }
     if (data) {
       // req.session.userEmail = data.email;
@@ -24,4 +25,5 @@ const submit = (req, res, next) => {
     }
   });
 };
-export default { form, submit, logout };
+
+export default { form, submit };
