@@ -9,11 +9,6 @@ const submit = (req, res, next) => {
   User.authenticate(req.body.loginForm, (err, data) => {
     //data is user
     if (err) return next(err);
-    if (!data) {
-      console.log("...");
-      console.log("Имя или пароль не верны!");
-      res.redirect("back");
-    }
     if (data) {
       // req.session.userEmail = data.email;
       req.session.email = data.email;
@@ -23,7 +18,16 @@ const submit = (req, res, next) => {
       req.session.password = data.password;
       res.redirect("/");
     }
+    if (!data) {
+      console.log("...");
+      console.log("Имя или пароль не верны!");
+      res.redirect("back");
+    }
   });
 };
-
-export default { form, submit };
+const logout = (req, res, err, next) => {
+  req.session.destroy((req, res, err, next) => {
+    if (err) return next(err);
+  });
+};
+export default { form, submit, logout };

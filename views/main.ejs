@@ -33,10 +33,11 @@
         max-width: 400px;
       }
     </style>
+    <link rel="stylesheet" href="./bootstrap.css" />
+    <script src="/bootstrap.js"></script>
   </head>
   <body>
     <header>
-      <%- include('partials/menu.ejs'); -%>
       <h1>Заголовок страницы</h1>
       <button
         onclick="window.location.href = 'http://localhost:3000/register';"
@@ -52,6 +53,7 @@
       <h2>Заголовок карточки</h2>
       <%= title %>
       <p>Текст карточки</p>
+      <%- include('partials/menu.ejs'); -%>
     </div>
     <footer>
       <p>Футер страницы</p>
