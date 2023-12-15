@@ -10,11 +10,8 @@ const submit = (req, res, next) => {
     //data is user
     if (err) return next(err);
     if (data) {
-      // req.session.userEmail = data.email;
       req.session.email = data.email;
-      // req.session.userName = data.name;
       req.session.name = data.name;
-      // req.session.userPassword = data.password;
       req.session.password = data.password;
       res.redirect("/");
     }

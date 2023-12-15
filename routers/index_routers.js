@@ -16,12 +16,11 @@ const router = express.Router();
 router.use(favicon(__dirname + "/favicon.ico"));
 
 router.get("/", entries.list);
-// router.post("/entry", entry);
 
 router.get("/logout", login.logout);
 
-// router.get("/entry", entries.form);
-// router.post("/entry", entries.submit);
+router.get("/entries", entries.form);
+router.post("/entry", entries.submit);
 
 router.get("/login", login.form);
 router.post("/login", login.submit);
