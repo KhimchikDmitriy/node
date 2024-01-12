@@ -1,7 +1,7 @@
 import User from "../models/user.js";
 
 const form = (req, res) => {
-  res.render("login", { title: "chepokrashka" });
+  res.render("login", { title: "Login" });
   console.log("...");
   console.log("заход на /login");
 };
@@ -9,22 +9,36 @@ const submit = (req, res, next) => {
   User.authenticate(req.body.loginForm, (err, data) => {
     //data is user
     if (err) return next(err);
+    if (!data) {
+      console.log("...");
+      console.log("Имя или пароль неверны!");
+      return form(req, res);
+    }
     if (data) {
       req.session.email = data.email;
       req.session.name = data.name;
       req.session.password = data.password;
+      req.session.role = data.role;
+      console.log("...");
+      console.log("Всё верно!");
       res.redirect("/");
     }
-    if (!data) {
-      console.log("...");
-      console.log("Имя или пароль не верны!");
-      res.redirect("back");
+  });
+};
+
+const logout = (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log("! ! !");
+      console.log("! ! !");
+      console.log("! ! !");
+      console.log("ошибка ");
+      console.log("! ! !");
+      console.log("! ! !");
+      console.log(err.message);
     }
+    return res.redirect("/");
   });
 };
-const logout = (req, res, err, next) => {
-  req.session.destroy((req, res, err, next) => {
-    if (err) return next(err);
-  });
-};
+
 export default { form, submit, logout };

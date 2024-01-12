@@ -1,42 +1,64 @@
-import sqlite3 from "sqlite3";
-import bcrypt from "bcrypt";
+import connection from "./sql.js";
 
-const db = new sqlite3.Database("./test.sqlite");
 const sql =
-  "CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT(255) NOT NULL, email TEXT(255) NOT NULL, password TEXT(20), age INTEGER NOT NULL)";
+  "CREATE TABLE IF NOT EXISTS user (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, password VARCHAR(50), age INT NOT NULL, role VARCHAR(50) DEFAULT 'user')";
 
-db.run(sql, (err) => {
+connection.query(sql, (err) => {
   if (err) {
-    console.log(err);
+    console.log("! ! !");
+    console.log("! ! !");
+    console.log("! ! !");
+    console.log("ошибка ");
+    console.log("! ! !");
+    console.log("! ! !");
+    console.log(err.message);
   }
 });
 
 class User {
   constructor() {}
 
-  static async create(dataForm, cb) {
-    try {
-      const salt = await bcrypt.genSalt(10);
-      const hash = await bcrypt.hash(dataForm.password, salt);
-      const sql1 =
-        "INSERT INTO user (name, email, password, age) VALUES (?, ?, ?, ?)";
-      db.run(sql1, dataForm.name, dataForm.email, hash, dataForm.age, cb);
-    } catch (err) {
+  static create(dataForm, cb) {
+    const sql =
+      "INSERT INTO user (name, email, password, age, role) VALUES (?, ?, ?, ?, 'user')";
+    const { name, email, password, age } = dataForm;
+    connection.query(sql, [name, email, password, age], (err) => {
+      if (err) {
+        console.log("! ! !");
+        console.log("! ! !");
+        console.log("! ! !");
+        console.log("ошибка ");
+        console.log("! ! !");
+        console.log("! ! !");
+        console.log(err.message);
+      }
       cb(err);
-    }
+    });
   }
 
   static findByEmail(email, cb) {
-    db.get("SELECT * FROM user WHERE email = ?", email, cb);
+    const sql = "SELECT * FROM user WHERE email = ?";
+    connection.query(sql, [email], (err, rows) => {
+      if (err) {
+        console.log("! ! !");
+        console.log("! ! !");
+        console.log("! ! !");
+        console.log("ошибка ");
+        console.log("! ! !");
+        console.log("! ! !");
+        console.log(err.message);
+        cb(err, null);
+      } else {
+        cb(null, rows[0]);
+      }
+    });
   }
 
   static authenticate(dataForm, cb) {
-    User.findByEmail(dataForm.email, async (err, user) => {
+    User.findByEmail(dataForm.email, (err, user) => {
       if (err) return cb(err);
       if (!user) return cb();
-
-      const result = await bcrypt.compare(dataForm.password, user.password);
-      if (result) {
+      if (dataForm.password === user.password) {
         return cb(null, user);
       } else return cb();
     });

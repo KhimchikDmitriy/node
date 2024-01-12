@@ -8,6 +8,7 @@ import ejs from "ejs";
 import myRoutes from "./routers/index_routers.js";
 import session from "express-session";
 import user_session from "./middleware/user_session.js";
+import User from "./models/user.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -34,7 +35,8 @@ app.use(
   )
 );
 app.use(session({ secret: "TenSura", resave: false, saveUninitialized: true }));
-app.use(favicon(join(__dirname, "/public/img/ico.png")));
+
+app.use(favicon(join(__dirname, "/public/img/ico.jpg")));
 app.use(user_session);
 app.use(myRoutes);
 
@@ -56,12 +58,14 @@ function addline(line) {
     if (err) return console.log(err);
   });
 }
+
 // error handler
 app.use((req, res, next) => {
   const err = new Error("какая-то непонятная ошибка");
   err.status = 404;
   next(err);
 });
+
 //production error handler
 app.get("env") == "production";
 console.log("переход на " + app.get("env"));
@@ -82,6 +86,6 @@ if (app.get("env") != "development") {
     console.log(app.get);
     console.log("! ! !");
     console.log(err.message);
-    res.end("GOVNOKOD!");
+    res.end("Omnissia not dovolen!");
   });
 }

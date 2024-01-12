@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %> </title>
-    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/bootstrap.css" />
+    <script src="/bootstrap.js"></script>
 </head>
 <body>
     <div class="container">
 <%- include ('./partials/menu') %>
-<!-- <%#- include ('./partials/messages') %> -->
-<%# entries.forEach((entry)=>{ %>
-    <div class="card entry" style="width: 66rem;">
+<% entries.posts.forEach((entry)=>{ %>
         <div class="card-body ">
-          <h5 class="card-title"><%#= entry.title %></h5>
-        
-        <p class="card-text">
-            <%#= entry.content %> 
-            тут контент будет
+        <p><%= entry.author%> 
+            <% if (name === entry.author || role === 'admin') { %>
+                <a href="posts/edit/<%= entry.id %>" ><img src="/img/pencil.png" width="15" alt="изменить" /></a>
+                <a href="posts/delete/<%= entry.id %>" ><img src="img/rectangle.png" width="15" alt="удалить" /></a>
+            <% } %></p>
+        <p>
+            <%= entry.title %>
         </p>
-    </br>
-    <h6>Запостил :   <%#= entry.username %> </h6>
+        <p>
+            <%= entry.body %>
+        </p>
         </div>
-    </div> 
     </br>
-<%# }) %> 
+<% }) %>
+
 </div>
 </body>
 </html>

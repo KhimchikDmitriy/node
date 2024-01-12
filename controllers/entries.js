@@ -1,14 +1,18 @@
-import Entry from "../models/entry";
+import Entry from "../models/entry.js";
 
-const list = (req, res) => {
+const list = (req, res, next) => {
   Entry.selectAll((err, entries) => {
     if (err) return next(err);
-    res.render("entries", { title: "List", entries: entries });
+    res.render("entries", {
+      title: "Главная страница",
+      name: req.session.name,
+      email: req.session.email,
+      role: req.session.role,
+      entries: entries,
+    });
+    console.log("...");
+    console.log("заход на /");
   });
-
-  res.render("main", { title: "chepokrashka" });
-  console.log("...");
-  console.log("заход на /");
 };
 
 const form = (req, res, next) => {
@@ -17,7 +21,7 @@ const form = (req, res, next) => {
 
 const submit = (req, res, next) => {
   try {
-    const username = req.user ? req.user.username : null;
+    const username = req.user ? req.user.name : null;
     const data = req.body.entry;
 
     const entry = {
@@ -25,9 +29,16 @@ const submit = (req, res, next) => {
       title: data.title,
       content: data.content,
     };
+
     Entry.create(entry);
     res.redirect("/");
   } catch (err) {
+    console.log("! ! !");
+    console.log("! ! !");
+    console.log("! ! !");
+    console.log("ошибка ");
+    console.log("! ! !");
+    console.log("! ! !");
     return next(err);
   }
 };
