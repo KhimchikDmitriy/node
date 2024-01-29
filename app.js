@@ -12,7 +12,7 @@ import morgan from "morgan";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
-const port = "3000";
+const port = process.env.PORT;
 const currentTime = new Date().toLocaleString();
 
 app.set("view engine", "ejs");
@@ -34,7 +34,13 @@ app.use(
     join(__dirname, "public/css/bootstrap-5.3.2/dist/js/bootstrap.js")
   )
 );
-app.use(session({ secret: "apple", resave: false, saveUninitialized: true }));
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 app.use(morgan("tiny"));
 
 app.use(favicon(join(__dirname, "/public/img/ico.jpg")));
