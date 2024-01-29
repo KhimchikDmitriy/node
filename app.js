@@ -4,11 +4,10 @@ import { join } from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
-import ejs from "ejs";
 import myRoutes from "./routers/index_routers.js";
 import session from "express-session";
 import user_session from "./middleware/user_session.js";
-import User from "./models/user.js";
+import messages from "./middleware/messages.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -34,9 +33,10 @@ app.use(
     join(__dirname, "public/css/bootstrap-5.3.2/dist/js/bootstrap.js")
   )
 );
-app.use(session({ secret: "TenSura", resave: false, saveUninitialized: true }));
+app.use(session({ secret: "apple", resave: false, saveUninitialized: true }));
 
 app.use(favicon(join(__dirname, "/public/img/ico.jpg")));
+app.use(messages); //  ??
 app.use(user_session);
 app.use(myRoutes);
 
@@ -72,7 +72,6 @@ console.log("переход на " + app.get("env"));
 
 if (app.get("env") != "development") {
   app.use((err, req, res, next) => {
-    // err.status = 400;
     res.render("error.ejs", { error: err.message, status: err.status });
   });
 } else {
@@ -86,6 +85,6 @@ if (app.get("env") != "development") {
     console.log(app.get);
     console.log("! ! !");
     console.log(err.message);
-    res.end("Omnissia not dovolen!");
+    res.end("Omnissia not satisfied!");
   });
 }

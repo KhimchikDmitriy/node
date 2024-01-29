@@ -19,7 +19,7 @@ const submit = [
       !validator.isEmail(email) ||
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     ) {
-      res.locals.errorMessage.push("Проверьте правильность написания пароля.");
+      res.locals.errorMessage.push("Проверьте правильность написания email.");
       return form(req, res);
     }
 

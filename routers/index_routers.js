@@ -1,18 +1,13 @@
-import { create } from "domain";
 import express from "express";
 import favicon from "express-favicon";
-import { join } from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import fs from "fs";
-import ejs from "ejs";
-import pkg from "method-override";
-const { MethodOverride } = pkg;
 import register from "../controllers/register.js";
 import entries from "../controllers/entries.js";
 import login from "../controllers/login.js";
 import posts from "../controllers/posts.js";
 import connection from "../models/sql.js";
+import validate from "../middleware/postValidation.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const router = express.Router();
@@ -50,7 +45,12 @@ router.post("/login", login.submit);
 router.get("/logout", login.logout);
 
 router.get("/new", posts.form);
-router.post("/new", posts.addPost);
+router.post(
+  "/new",
+  posts.addPost,
+  validate.validate("[title]"), // - skobki
+  validate.validateSimbol("[body]") // - skobki
+);
 
 router.get("/posts/edit/:id", (req, res) => {
   const sql = "SELECT * FROM posts WHERE id = ?";

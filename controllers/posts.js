@@ -36,7 +36,6 @@ const addPost = (req, res) => {
         console.log("ошибка ");
         console.log("! ! !");
         console.log("! ! !");
-        res.end("Omnissia not dovolen!");
       } else {
         res.redirect("/");
         console.log("...");
