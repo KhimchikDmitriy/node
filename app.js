@@ -8,6 +8,7 @@ import myRoutes from "./routers/index_routers.js";
 import session from "express-session";
 import user_session from "./middleware/user_session.js";
 import messages from "./middleware/messages.js";
+import logg from "./logger/index.js";
 // import morgan from "morgan";
 import "dotenv/config.js";
 

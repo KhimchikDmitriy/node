@@ -8,6 +8,7 @@ import login from "../controllers/login.js";
 import posts from "../controllers/posts.js";
 import connection from "../models/sql.js";
 import validate from "../middleware/postValidation.js";
+import logger from "../logger/index.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const router = express.Router();
@@ -15,6 +16,11 @@ const router = express.Router();
 router.use(favicon(__dirname + "/favicon.ico"));
 
 router.get("/", entries.list);
+
+router.get("/proverka", (req, res) => {
+  res.end("Omnissia bdit");
+  logger.info("заход на главную - проверка");
+});
 
 router.get("/entries", entries.form, (req, res) => {
   posts.getPosts((err, posts) => {
@@ -26,6 +32,7 @@ router.get("/entries", entries.form, (req, res) => {
       console.log("! ! !");
       console.log("! ! !");
       console.log(err.message);
+      logger.error(err);
     } else {
       res.render("main", {
         title: "Главная страница",
@@ -63,6 +70,7 @@ router.get("/posts/edit/:id", (req, res) => {
       console.log("! ! !");
       console.log("! ! !");
       console.log(err.message);
+      logger.error(err);
     } else {
       res.render("posts/edit", { post: results[0] });
       console.log("...");
@@ -83,6 +91,7 @@ router.post("/posts/edit/:id", (req, res) => {
         console.log("! ! !");
         console.log("! ! !");
         console.log(err.message);
+        logger.error(err);
       } else {
         res.redirect("/");
         console.log("...");
@@ -102,6 +111,7 @@ router.get("/posts/delete/:id", (req, res) => {
       console.log("! ! !");
       console.log("! ! !");
       console.log(err.message);
+      logger.error(err);
     } else {
       res.redirect("/");
       console.log("...");
