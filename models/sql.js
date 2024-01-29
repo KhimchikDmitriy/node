@@ -1,11 +1,12 @@
 import mysql from "mysql";
+import "dotenv/config.js";
 
 const connection = mysql.createConnection({
   host: "sql11.freemysqlhosting.net",
   port: "3306",
-  user: "sql11678757",
-  password: "1N3CZFwPCa",
-  database: "sql11678757",
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
 });
 
 connection.connect((err) => {

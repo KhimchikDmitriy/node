@@ -8,7 +8,8 @@ import myRoutes from "./routers/index_routers.js";
 import session from "express-session";
 import user_session from "./middleware/user_session.js";
 import messages from "./middleware/messages.js";
-import morgan from "morgan";
+// import morgan from "morgan";
+import "dotenv/config.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -41,7 +42,7 @@ app.use(
     saveUninitialized: true,
   })
 );
-app.use(morgan("tiny"));
+// app.use(morgan("tiny"));
 
 app.use(favicon(join(__dirname, "/public/img/ico.jpg")));
 app.use(messages); //  ??
