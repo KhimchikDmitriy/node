@@ -7,7 +7,7 @@ import entries from "../controllers/entries.js";
 import login from "../controllers/login.js";
 import posts from "../controllers/posts.js";
 import connection from "../models/sql.js";
-import validate from "../middleware/postValidation.js";
+import sqlLogic from "../middleware/sqlLogic.js";
 import logger from "../logger/index.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -52,72 +52,10 @@ router.post("/login", login.submit);
 router.get("/logout", login.logout);
 
 router.get("/new", posts.form);
-router.post(
-  "/new",
-  posts.addPost,
-  validate.validate("[title]"), // - skobki
-  validate.validateSimbol("[body]") // - skobki
-);
+router.post("/new", posts.addPost);
 
-router.get("/posts/edit/:id", (req, res) => {
-  const sql = "SELECT * FROM posts WHERE id = ?";
-  connection.query(sql, [req.params.id], (err, results) => {
-    if (err) {
-      console.log("! ! !");
-      console.log("! ! !");
-      console.log("! ! !");
-      console.log("ошибка ");
-      console.log("! ! !");
-      console.log("! ! !");
-      console.log(err.message);
-      logger.error(err);
-    } else {
-      res.render("posts/edit", { post: results[0] });
-      console.log("...");
-    }
-  });
-});
-router.post("/posts/edit/:id", (req, res) => {
-  const sql = "UPDATE posts SET title = ?, body = ? WHERE id = ?";
-  connection.query(
-    sql,
-    [req.body.title, req.body.body, req.params.id],
-    (err, result) => {
-      if (err) {
-        console.log("! ! !");
-        console.log("! ! !");
-        console.log("! ! !");
-        console.log("ошибка ");
-        console.log("! ! !");
-        console.log("! ! !");
-        console.log(err.message);
-        logger.error(err);
-      } else {
-        res.redirect("/");
-        console.log("...");
-        console.log("операция проведена успешно");
-      }
-    }
-  );
-});
-router.get("/posts/delete/:id", (req, res) => {
-  const sql = "DELETE FROM posts WHERE id = ?";
-  connection.query(sql, [req.params.id], (err, result) => {
-    if (err) {
-      console.log("! ! !");
-      console.log("! ! !");
-      console.log("! ! !");
-      console.log("ошибка ");
-      console.log("! ! !");
-      console.log("! ! !");
-      console.log(err.message);
-      logger.error(err);
-    } else {
-      res.redirect("/");
-      console.log("...");
-      console.log("операция проведена успешно");
-    }
-  });
-});
+router.get("/posts/edit/:id", sqlLogic.edit);
+router.post("/posts/edit/:id", sqlLogic.update);
+router.get("/posts/delete/:id", sqlLogic.deleted);
 
 export default router;

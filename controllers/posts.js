@@ -18,9 +18,16 @@ connection.query(sql, (err) => {
   }
 });
 
-const addPost = (req, res) => {
+const addPost = (req, res, next) => {
   const { title, body } = req.body;
   const author = req.session.name;
+
+  if (!title || !body) {
+    console.log("...");
+    console.log("Все поля должны быть заполнены!");
+    res.redirect("/new");
+    return;
+  }
 
   let query = "INSERT INTO posts (title, body, author) VALUES (?, ?, ?)";
   connection.query(

@@ -1,5 +1,5 @@
 import User from "../models/user.js";
-import validatePassword from "../middleware/passwordValidation.js";
+import validatePassword from "../middleware/validation.js";
 import validator from "validator";
 
 const form = (req, res) => {
