@@ -57,7 +57,7 @@ const addPost = (req, res, next) => {
         console.log("...");
         console.log("успешное создание поста");
         console.log("...");
-        logger.info("Пост создан");
+        logger.info("Пост создан" + " " + author);
       }
     }
   );
