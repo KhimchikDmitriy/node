@@ -1,6 +1,7 @@
 import User from "../models/user.js";
 import validatePassword from "../middleware/validation.js";
 import validator from "validator";
+import logger from "../logger/index.js";
 
 const form = (req, res) => {
   res.render("registerForm", {
@@ -9,6 +10,8 @@ const form = (req, res) => {
   });
   console.log("...");
   console.log("заход на /register");
+  console.log("...");
+  logger.info("заход на страницу регистрации");
 };
 
 const submit = [
@@ -19,7 +22,16 @@ const submit = [
       !validator.isEmail(email) ||
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     ) {
+      console.log("! ! !");
+      console.log("! ! !");
+      console.log("! ! !");
+      console.log("ошибка ");
+      console.log("! ! !");
+      console.log("! ! !");
       res.locals.errorMessage.push("Проверьте правильность написания email.");
+      console.log("! ! !");
+      console.log("! ! !");
+      logger.error("Неправильно записан email");
       return form(req, res);
     }
 
@@ -35,6 +47,8 @@ const submit = [
           res.redirect("/login");
           console.log("...");
           console.log("произведена регестрация");
+          console.log("...");
+          logger.info("произведена регестрация");
         });
       } else {
         console.log("! ! !");
@@ -45,6 +59,8 @@ const submit = [
         console.log("! ! !");
         res.locals.errorMessage.push("Такой пользователь уже существует!");
         console.log("Такой пользователь уже существует");
+        console.log("...");
+        logger.error("Такой пользователь уже существует");
         return form(req, res);
       }
     });

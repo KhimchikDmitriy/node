@@ -1,3 +1,5 @@
+import logger from "../logger/index.js";
+
 const validatePassword = (req, res, next) => {
   const password = req.body.password;
   let errorMessage = [];
@@ -11,6 +13,9 @@ const validatePassword = (req, res, next) => {
     console.log("! ! !");
     console.log("! ! !");
     console.log("Пароль должен содержать не менее 8 символов.");
+    console.log("! ! !");
+    console.log("! ! !");
+    logger.error("Ошибка пароля - менее 8 символов");
   }
 
   if (/[а-яА-ЯЁё]/.test(password)) {
@@ -22,6 +27,9 @@ const validatePassword = (req, res, next) => {
     console.log("! ! !");
     console.log("! ! !");
     console.log("Пароль не должен содержать кириллицу.");
+    console.log("! ! !");
+    console.log("! ! !");
+    logger.error("Ошибка пароля - использована кириллица");
   }
 
   if (errorMessage !== "") {

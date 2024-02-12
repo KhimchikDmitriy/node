@@ -1,4 +1,5 @@
 import connection from "./sql.js";
+import logger from "../logger/index.js";
 
 const sql =
   "CREATE TABLE IF NOT EXISTS user (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, password VARCHAR(50), age INT NOT NULL, role VARCHAR(50) DEFAULT 'user')";
@@ -11,6 +12,7 @@ connection.query(sql, (err) => {
     console.log("ошибка ");
     console.log("! ! !");
     console.log("! ! !");
+    logger.error("Error");
     console.log(err.message);
   }
 });
@@ -30,6 +32,7 @@ class User {
         console.log("ошибка ");
         console.log("! ! !");
         console.log("! ! !");
+        logger.error("Ошибка создания пользователя");
         console.log(err.message);
       }
       cb(err);
@@ -46,6 +49,7 @@ class User {
         console.log("ошибка ");
         console.log("! ! !");
         console.log("! ! !");
+        logger.error("Error");
         console.log(err.message);
         cb(err, null);
       } else {

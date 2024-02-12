@@ -1,3 +1,4 @@
+import logger from "../logger/index.js";
 import User from "../models/user.js";
 
 const form = (req, res) => {
@@ -10,8 +11,13 @@ const submit = (req, res, next) => {
     //data is user
     if (err) return next(err);
     if (!data) {
-      console.log("...");
+      console.log("! ! !");
+      console.log("! ! !");
+      console.log("! ! !");
       console.log("Имя или пароль неверны!");
+      console.log("! ! !");
+      console.log("! ! !");
+      logger.error("Ошибка ввода пароля");
       return form(req, res);
     }
     if (data) {
@@ -21,6 +27,8 @@ const submit = (req, res, next) => {
       req.session.role = data.role;
       console.log("...");
       console.log("Всё верно!");
+      console.log("...");
+      logger.info("Заход произведён");
       res.redirect("/");
     }
   });
@@ -35,6 +43,7 @@ const logout = (req, res) => {
       console.log("ошибка ");
       console.log("! ! !");
       console.log("! ! !");
+      logger.error("Ошибка выхода");
       console.log(err.message);
     }
     return res.redirect("/");

@@ -6,7 +6,6 @@ import register from "../controllers/register.js";
 import entries from "../controllers/entries.js";
 import login from "../controllers/login.js";
 import posts from "../controllers/posts.js";
-import connection from "../models/sql.js";
 import sqlLogic from "../middleware/sqlLogic.js";
 import logger from "../logger/index.js";
 
@@ -20,6 +19,7 @@ router.get("/", entries.list);
 router.get("/proverka", (req, res) => {
   res.end("Omnissia bdit");
   logger.info("заход на главную - проверка");
+  logger.error("Error");
 });
 
 router.get("/entries", entries.form, (req, res) => {
@@ -31,8 +31,8 @@ router.get("/entries", entries.form, (req, res) => {
       console.log("ошибка ");
       console.log("! ! !");
       console.log("! ! !");
+      logger.error("Ошибка захода на страницу");
       console.log(err.message);
-      logger.error(err);
     } else {
       res.render("main", {
         title: "Главная страница",

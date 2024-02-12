@@ -8,7 +8,7 @@ import myRoutes from "./routers/index_routers.js";
 import session from "express-session";
 import user_session from "./middleware/user_session.js";
 import messages from "./middleware/messages.js";
-import logg from "./logger/index.js";
+import logger from "./logger/index.js";
 // import morgan from "morgan";
 import "dotenv/config.js";
 
@@ -46,7 +46,7 @@ app.use(
 // app.use(morgan("tiny"));
 
 app.use(favicon(join(__dirname, "/public/img/ico.jpg")));
-app.use(messages); //  ??
+app.use(messages);
 app.use(user_session);
 app.use(myRoutes);
 
@@ -60,6 +60,8 @@ app.listen(port, () => {
   console.log("логгирование завершено");
   console.log("...");
   console.log("в данный момент используется версия " + app.get("env"));
+  console.log("...");
+  logger.info("Запуск сервера");
 });
 
 function addline(line) {
@@ -83,6 +85,7 @@ console.log("переход на " + app.get("env"));
 if (app.get("env") != "development") {
   app.use((err, req, res, next) => {
     res.render("error.ejs", { error: err.message, status: err.status });
+    logger.error(err.message);
   });
 } else {
   app.use((err, req, res, next) => {
@@ -95,6 +98,8 @@ if (app.get("env") != "development") {
     console.log(app.get);
     console.log("! ! !");
     console.log(err.message);
+    console.log("! ! !");
+    logger.error(err.message);
     res.end("Omnissia not satisfied!");
   });
 }

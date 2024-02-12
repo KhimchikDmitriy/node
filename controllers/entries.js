@@ -1,3 +1,4 @@
+import logger from "../logger/index.js";
 import Entry from "../models/entry.js";
 
 const list = (req, res, next) => {
@@ -12,6 +13,8 @@ const list = (req, res, next) => {
     });
     console.log("...");
     console.log("заход на /");
+    console.log("...");
+    logger.info("Заход на главную страницу");
   });
 };
 
@@ -39,6 +42,7 @@ const submit = (req, res, next) => {
     console.log("ошибка ");
     console.log("! ! !");
     console.log("! ! !");
+    logger.error(err.message);
     return next(err);
   }
 };

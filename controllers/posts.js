@@ -1,4 +1,5 @@
 import connection from "../models/sql.js";
+import logger from "../logger/index.js";
 
 const form = (req, res) => {
   res.render("posts/new", {
@@ -7,6 +8,8 @@ const form = (req, res) => {
   });
   console.log("...");
   console.log("заход на /new");
+  console.log("...");
+  logger.info("заход на страницу создания поста");
 };
 
 const sql =
@@ -23,8 +26,13 @@ const addPost = (req, res, next) => {
   const author = req.session.name;
 
   if (!title || !body) {
-    console.log("...");
+    console.log("! ! !");
+    console.log("! ! !");
+    console.log("! ! !");
     console.log("Все поля должны быть заполнены!");
+    console.log("! ! !");
+    console.log("! ! !");
+    logger.error("Не заполнены поля для создания поста");
     res.redirect("/new");
     return;
   }
@@ -43,10 +51,13 @@ const addPost = (req, res, next) => {
         console.log("ошибка ");
         console.log("! ! !");
         console.log("! ! !");
+        logger.error("Ошибка создания поста");
       } else {
         res.redirect("/");
         console.log("...");
         console.log("успешное создание поста");
+        console.log("...");
+        logger.info("Пост создан");
       }
     }
   );
@@ -62,12 +73,15 @@ function getPosts(callback) {
       console.log("ошибка ");
       console.log("! ! !");
       console.log("! ! !");
+      logger.error("Error");
       console.log(err.message);
       callback(err, null);
     } else {
       callback(null, results);
       console.log("...");
       console.log("операция прошла успешно");
+      console.log("...");
+      logger.info("Успешно!");
     }
   });
 }
