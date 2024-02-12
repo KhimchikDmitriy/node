@@ -28,7 +28,7 @@ const submit = (req, res, next) => {
       console.log("...");
       console.log("Всё верно!");
       console.log("...");
-      logger.info("Заход произведён");
+      logger.info("Заход произведён" + " " + data.name + " " + data.email);
       res.redirect("/");
     }
   });
