@@ -3,3 +3,8 @@
   level: 'error',
   timestamp: '2024-02-12T07:21:38.742Z'
 }
+{
+  message: 'Такой пользователь уже существует',
+  level: 'error',
+  timestamp: '2024-02-19T07:54:43.147Z'
+}

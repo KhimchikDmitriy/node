@@ -2,6 +2,7 @@ import User from "../models/user.js";
 import validatePassword from "../middleware/validation.js";
 import validator from "validator";
 import logger from "../logger/index.js";
+import jwt from "jsonwebtoken";
 
 const form = (req, res) => {
   res.render("registerForm", {
@@ -49,6 +50,21 @@ const submit = [
           console.log("произведена регестрация");
           console.log("...");
           logger.info("произведена регестрация");
+
+          //jwt
+          const token = jwt.sign(
+            {
+              email: req.body.email,
+            },
+            process.env.JWTTOKENSECRET,
+            {
+              expiresIn: process.env.JWTTOKENTIME,
+            }
+          );
+          console.log("...");
+          console.log("токен подготовлен");
+          console.log("...");
+          logger.info("токен подготовлен:" + token);
         });
       } else {
         console.log("! ! !");
