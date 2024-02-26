@@ -8,3 +8,23 @@
   level: 'error',
   timestamp: '2024-02-19T07:54:43.147Z'
 }
+{
+  message: 'какая-то непонятная ошибка',
+  level: 'error',
+  timestamp: '2024-02-26T08:14:54.600Z'
+}
+{
+  message: 'какая-то непонятная ошибка',
+  level: 'error',
+  timestamp: '2024-02-26T08:14:54.699Z'
+}
+{
+  message: 'какая-то непонятная ошибка',
+  level: 'error',
+  timestamp: '2024-02-26T08:18:06.257Z'
+}
+{
+  message: 'какая-то непонятная ошибка',
+  level: 'error',
+  timestamp: '2024-02-26T08:18:06.261Z'
+}

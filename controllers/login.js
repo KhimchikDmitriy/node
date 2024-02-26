@@ -1,5 +1,7 @@
 import logger from "../logger/index.js";
 import User from "../models/user.js";
+import jwt from "jsonwebtoken";
+import cookieParser from "cookie-parser";
 
 const form = (req, res) => {
   res.render("login", { title: "Login" });
@@ -29,6 +31,31 @@ const submit = (req, res, next) => {
       console.log("Всё верно!");
       console.log("...");
       logger.info("Заход произведён" + " " + data.name + " " + data.email);
+
+      //jwt
+      const token = jwt.sign(
+        {
+          email: data.email,
+        },
+        process.env.JWTTOKENSECRET,
+        {
+          expiresIn: process.env.JWTTOKENTIME,
+        }
+      );
+      console.log("...");
+      console.log("токен подготовлен");
+      console.log("...");
+      logger.info("токен подготовлен:" + token);
+
+      //jwt cookie
+      res.cookie("jwt", token, {
+        httpOnly: true,
+        secure: true,
+        maxAge: 3600000,
+      });
+      console.log("...");
+      console.log("куки подготовлен");
+
       res.redirect("/");
     }
   });

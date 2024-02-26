@@ -11,6 +11,7 @@ import messages from "./middleware/messages.js";
 import logger from "./logger/index.js";
 // import morgan from "morgan";
 import "dotenv/config.js";
+import cookieParser from "cookie-parser";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -49,6 +50,7 @@ app.use(favicon(join(__dirname, "/public/img/ico.jpg")));
 app.use(messages);
 app.use(user_session);
 app.use(myRoutes);
+app.use(cookieParser());
 
 app.listen(port, () => {
   console.log("...");
