@@ -28,3 +28,13 @@
   level: 'error',
   timestamp: '2024-02-26T08:18:06.261Z'
 }
+{
+  message: 'какая-то непонятная ошибка',
+  level: 'error',
+  timestamp: '2024-02-26T08:45:17.834Z'
+}
+{
+  message: 'какая-то непонятная ошибка',
+  level: 'error',
+  timestamp: '2024-02-26T08:45:17.977Z'
+}

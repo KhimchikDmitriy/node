@@ -62,6 +62,7 @@ const submit = (req, res, next) => {
 };
 
 const logout = (req, res) => {
+  res.clearCookie("jwt");
   req.session.destroy((err) => {
     if (err) {
       console.log("! ! !");
