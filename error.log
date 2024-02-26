@@ -38,3 +38,13 @@
   level: 'error',
   timestamp: '2024-02-26T08:45:17.977Z'
 }
+{
+  message: 'Не заполнены поля для создания поста',
+  level: 'error',
+  timestamp: '2024-02-26T09:22:01.506Z'
+}
+{
+  message: 'alert is not defined',
+  level: 'error',
+  timestamp: '2024-02-26T09:22:01.518Z'
+}

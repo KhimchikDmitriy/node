@@ -2,6 +2,7 @@ import express from "express";
 import favicon from "express-favicon";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import passport from "passport";
 import register from "../controllers/register.js";
 import entries from "../controllers/entries.js";
 import login from "../controllers/login.js";
@@ -15,12 +16,6 @@ const router = express.Router();
 router.use(favicon(__dirname + "/favicon.ico"));
 
 router.get("/", entries.list);
-
-router.get("/proverka", (req, res) => {
-  res.end("Omnissia bdit");
-  logger.info("заход на главную - проверка");
-  logger.error("Error");
-});
 
 router.get("/entries", entries.form, (req, res) => {
   posts.getPosts((err, posts) => {
@@ -52,7 +47,11 @@ router.post("/login", login.submit);
 router.get("/logout", login.logout);
 
 router.get("/new", posts.form);
-router.post("/new", posts.addPost);
+router.post(
+  "/new",
+  passport.authenticate("jwt", { session: false }),
+  posts.addPost
+);
 
 router.get("/posts/edit/:id", sqlLogic.edit);
 router.post("/posts/edit/:id", sqlLogic.update);

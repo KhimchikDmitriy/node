@@ -12,6 +12,8 @@ import logger from "./logger/index.js";
 // import morgan from "morgan";
 import "dotenv/config.js";
 import cookieParser from "cookie-parser";
+import passport from "passport";
+import passportFunction from "./middleware/passport.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -49,8 +51,10 @@ app.use(
 app.use(favicon(join(__dirname, "/public/img/ico.jpg")));
 app.use(messages);
 app.use(user_session);
-app.use(myRoutes);
 app.use(cookieParser());
+app.use(passport.initialize());
+passportFunction(passport);
+app.use(myRoutes);
 
 app.listen(port, () => {
   console.log("...");

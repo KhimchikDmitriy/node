@@ -62,6 +62,8 @@ const submit = [
               expiresIn: process.env.JWTTOKENTIME,
             }
           );
+          console.log("...");
+          console.log("токен подготовлен");
         });
       } else {
         console.log("! ! !");

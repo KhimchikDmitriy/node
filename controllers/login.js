@@ -44,8 +44,6 @@ const submit = (req, res, next) => {
       );
       console.log("...");
       console.log("токен подготовлен");
-      console.log("...");
-      logger.info("токен подготовлен:" + token);
 
       //jwt cookie
       res.cookie("jwt", token, {
