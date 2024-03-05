@@ -1,4 +1,4 @@
-import JwtStrtagy from "passport-jwt";
+import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 import User from "../models/user.js";
 import logger from "../logger/index.js";
 import "dotenv/config.js";
@@ -18,7 +18,7 @@ const options = {
 
 function passportFunction(passport) {
   passport.use(
-    new JwtStrtagy(options, function (jwt_payload, done) {
+    new JwtStrategy(options, function (jwt_payload, done) {
       User.findByEmail(jwt_payload.name, (err, user) => {
         if (err) return done(err, false);
         if (user) {
