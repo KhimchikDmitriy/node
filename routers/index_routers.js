@@ -7,7 +7,7 @@ import register from "../controllers/register.js";
 import entries from "../controllers/entries.js";
 import login from "../controllers/login.js";
 import posts from "../controllers/posts.js";
-import sqlLogic from "../middleware/sqlLogic.js";
+import sqlLogic from "../models/sqlLogic.js";
 import logger from "../logger/index.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

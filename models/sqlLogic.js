@@ -1,4 +1,4 @@
-import connection from "../models/sql.js";
+import connection from "./sql.js";
 import mysql from "mysql";
 import logger from "../logger/index.js";
 
