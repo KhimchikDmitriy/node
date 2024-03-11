@@ -48,3 +48,38 @@
   level: 'error',
   timestamp: '2024-02-26T09:22:01.518Z'
 }
+{
+  message: 'Unknown authentication strategy "jwt"',
+  level: 'error',
+  timestamp: '2024-03-11T06:32:49.851Z'
+}
+{
+  message: 'Unknown authentication strategy "jwt"',
+  level: 'error',
+  timestamp: '2024-03-11T06:32:55.494Z'
+}
+{
+  message: 'Unknown authentication strategy "jwt"',
+  level: 'error',
+  timestamp: '2024-03-11T06:41:50.606Z'
+}
+{
+  message: 'какая-то непонятная ошибка',
+  level: 'error',
+  timestamp: '2024-03-11T06:54:42.542Z'
+}
+{
+  message: 'какая-то непонятная ошибка',
+  level: 'error',
+  timestamp: '2024-03-11T06:54:42.597Z'
+}
+{
+  message: 'Ошибка ввода пароля',
+  level: 'error',
+  timestamp: '2024-03-11T07:25:01.017Z'
+}
+{
+  message: 'Ошибка ввода пароля',
+  level: 'error',
+  timestamp: '2024-03-11T07:25:16.169Z'
+}

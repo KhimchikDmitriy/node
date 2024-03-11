@@ -9,6 +9,7 @@ import login from "../controllers/login.js";
 import posts from "../controllers/posts.js";
 import sqlLogic from "../models/sqlLogic.js";
 import logger from "../logger/index.js";
+import ensureAuthenticated from "../middleware/isAuthenticated.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const router = express.Router();
@@ -38,6 +39,22 @@ router.get("/entries", entries.form, (req, res) => {
 });
 router.post("/entries", entries.submit);
 
+router.get(
+  "/auth/yandex",
+  passport.authenticate("yandex"),
+  function (req, res, next) {}
+);
+router.get(
+  "/auth/yandex/callback",
+  passport.authenticate(
+    "yandex",
+    { failureRedirect: "/login" },
+    function (req, res) {
+      res.redirect("/entries");
+    }
+  )
+);
+
 router.get("/register", register.form);
 router.post("/register", register.submit);
 
@@ -46,7 +63,7 @@ router.post("/login", login.submit);
 
 router.get("/logout", login.logout);
 
-router.get("/new", posts.form);
+router.get("/new", ensureAuthenticated, posts.form);
 router.post(
   "/new",
   passport.authenticate("jwt", { session: false }),

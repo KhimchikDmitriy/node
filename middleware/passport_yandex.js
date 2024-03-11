@@ -4,6 +4,11 @@ import "dotenv/config.js";
 
 function passportFunction(passport) {
   passport.serializeUser(function (user, done) {
+    const newUser = {};
+    newUser.id = user.id;
+    newUser.email = user.emails[0].value;
+    newUser.name = user.diasplayName;
+    newUser.age = user.birthday ? date.now() - user.birthday : 0;
     done(null, user);
   });
 
@@ -16,7 +21,7 @@ function passportFunction(passport) {
       {
         clientID: process.env.YANDEX_CLIENT_ID,
         clientSecret: process.env.YANDEX_CLIENT_SECRET,
-        callbackURL: "http://127.0.0.1:3000/auth/yandex/callback",
+        callbackURL: "http://localhost:3000/auth/yandex/callback",
       },
       function (accessToken, refreshToken, profile, done) {
         // asynchronous verification, for effect...
@@ -25,7 +30,11 @@ function passportFunction(passport) {
           // to represent the logged-in user.  In a typical application, you would
           // want to associate the Yandex account with a user record in your
           // database, and return that user instead.
-          logger.info("Получили профиль от Яндекса");
+          console.log("...");
+          console.log("...");
+          console.log("...");
+          console.log("Полчили профиль от Яндекса");
+          logger.info("Получили профиль от Яндекса.");
           return done(null, profile);
         });
       }
