@@ -1,8 +1,8 @@
-import { Strategy as YandexStrategy } from "passport-yandex";
+import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import logger from "../logger/index.js";
 import "dotenv/config.js";
 
-function passportFunctionYandex(passport) {
+function passportFunctionGoogle(passport) {
   passport.serializeUser(function (user, done) {
     const newUser = {};
     newUser.id = user.id;
@@ -17,11 +17,11 @@ function passportFunctionYandex(passport) {
   });
 
   passport.use(
-    new YandexStrategy(
+    new GoogleStrategy(
       {
-        clientID: process.env.YANDEX_CLIENT_ID,
-        clientSecret: process.env.YANDEX_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/yandex/callback",
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: "http://localhost:3000/auth/google/callback",
       },
       function (accessToken, refreshToken, profile, done) {
         // asynchronous verification, for effect...
@@ -42,4 +42,4 @@ function passportFunctionYandex(passport) {
   );
 }
 
-export default passportFunctionYandex;
+export default passportFunctionGoogle;

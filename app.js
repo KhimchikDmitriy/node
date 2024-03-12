@@ -14,7 +14,8 @@ import "dotenv/config.js";
 import cookieParser from "cookie-parser";
 import passport from "passport";
 // import passportFunction from "./middleware/passport.js";
-import passportFunction from "./middleware/passport_yandex.js";
+import passportFunctionYandex from "./middleware/passport_yandex.js";
+import passportFunctionGoogle from "./middleware/passport_goo.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -55,7 +56,8 @@ app.use(user_session);
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-passportFunction(passport);
+passportFunctionYandex(passport);
+// passportFunctionGoogle(passport);
 app.use(myRoutes);
 
 app.listen(port, () => {

@@ -83,3 +83,53 @@
   level: 'error',
   timestamp: '2024-03-11T07:25:16.169Z'
 }
+{
+  message: 'Wrong client secret',
+  level: 'error',
+  timestamp: '2024-03-12T06:32:03.823Z'
+}
+{
+  message: 'Wrong client secret',
+  level: 'error',
+  timestamp: '2024-03-12T06:36:59.991Z'
+}
+{
+  message: 'Wrong client secret',
+  level: 'error',
+  timestamp: '2024-03-12T06:37:03.134Z'
+}
+{
+  message: 'Wrong client secret',
+  level: 'error',
+  timestamp: '2024-03-12T06:37:21.085Z'
+}
+{
+  message: 'Wrong client secret',
+  level: 'error',
+  timestamp: '2024-03-12T06:38:44.302Z'
+}
+{
+  message: 'Wrong client secret',
+  level: 'error',
+  timestamp: '2024-03-12T06:39:17.367Z'
+}
+{
+  message: 'Wrong client secret',
+  level: 'error',
+  timestamp: '2024-03-12T06:40:51.403Z'
+}
+{
+  message: 'Wrong client secret',
+  level: 'error',
+  timestamp: '2024-03-12T06:43:11.687Z'
+}
+{
+  message: 'Unknown authentication strategy "jwt"',
+  level: 'error',
+  timestamp: '2024-03-12T06:46:25.008Z'
+}
+{
+  message: 'Unknown authentication strategy "jwt"',
+  level: 'error',
+  timestamp: '2024-03-12T06:54:32.657Z'
+}
