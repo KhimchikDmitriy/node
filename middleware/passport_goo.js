@@ -23,7 +23,7 @@ function passportFunctionGoogle(passport) {
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: "http://localhost:3000/auth/google/callback",
       },
-      function (accessToken, refreshToken, profile, done) {
+      function (request, accessToken, refreshToken, profile, done) {
         // asynchronous verification, for effect...
         process.nextTick(function () {
           // To keep the example simple, the user's Yandex profile is returned
@@ -33,8 +33,8 @@ function passportFunctionGoogle(passport) {
           console.log("...");
           console.log("...");
           console.log("...");
-          console.log("Полчили профиль от Яндекса");
-          logger.info("Получили профиль от Яндекса.");
+          console.log("Полчили профиль от Google");
+          logger.info("Получили профиль от Google.");
           return done(null, profile);
         });
       }

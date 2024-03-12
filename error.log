@@ -133,3 +133,18 @@
   level: 'error',
   timestamp: '2024-03-12T06:54:32.657Z'
 }
+{
+  message: 'author is not defined',
+  level: 'error',
+  timestamp: '2024-03-12T08:00:52.907Z'
+}
+{
+  message: 'Unknown authentication strategy "google"',
+  level: 'error',
+  timestamp: '2024-03-12T08:04:23.011Z'
+}
+{
+  message: 'Unknown authentication strategy "google"',
+  level: 'error',
+  timestamp: '2024-03-12T08:04:24.871Z'
+}

@@ -69,15 +69,16 @@ router.get(
 
 router.get(
   "/auth/google",
-  passport.authenticate("google"),
-  function (req, res, next) {}
+  passport.authenticate("google", { scope: ["email", "profile"] })
 );
 router.get(
   "/auth/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
+  passport.authenticate("google", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  }),
   (req, res, next) => {
     res.redirect("/");
   }
 );
-
 export default router;
