@@ -8,7 +8,7 @@ function passportFunctionGoogle(passport) {
     newUser.id = user.id;
     newUser.email = user.emails[0].value;
     newUser.name = user.diasplayName;
-    newUser.age = user.birthday ? date.now() - user.birthday : 0;
+    // newUser.age = user.birthday ? date.now() - user.birthday : 0;
     done(null, user);
   });
 
