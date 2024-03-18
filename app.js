@@ -57,9 +57,9 @@ app.use(user_session);
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-passportFunctionYandex(passport);
-passportFunctionGoogle(passport);
 passportFunctionVK(passport);
+// passportFunctionYandex(passport);
+// passportFunctionGoogle(passport);
 app.use(myRoutes);
 
 app.listen(port, () => {

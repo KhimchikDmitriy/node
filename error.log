@@ -153,3 +153,113 @@
   level: 'error',
   timestamp: '2024-03-18T08:32:17.517Z'
 }
+{
+  message: 'client_secret is undefined',
+  level: 'error',
+  timestamp: '2024-03-18T12:20:10.174Z'
+}
+{
+  message: 'client_secret is undefined',
+  level: 'error',
+  timestamp: '2024-03-18T12:20:56.174Z'
+}
+{
+  message: 'client_secret is undefined',
+  level: 'error',
+  timestamp: '2024-03-18T12:21:06.142Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T12:21:25.071Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T12:29:51.232Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T15:36:40.478Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T15:37:54.534Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T15:38:04.279Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T15:38:27.564Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T15:38:55.379Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T15:40:25.208Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T15:41:25.287Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T15:41:54.573Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T15:43:31.819Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T15:44:36.800Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T15:47:45.203Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T15:49:19.439Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T16:19:00.808Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T16:22:51.842Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T16:24:28.499Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T16:27:44.140Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-18T16:32:23.294Z'
+}
