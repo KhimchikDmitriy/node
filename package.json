@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vkid/sdk": "^1.1.0",
     "cookie-parser": "^1.4.6",
     "dota": "^0.0.2",
     "dotenv": "^16.4.1",
@@ -28,6 +29,8 @@
     "passport": "^0.7.0",
     "passport-google-oauth2": "^0.2.0",
     "passport-jwt": "^4.0.1",
+    "passport-vk-strategy": "^1.0.0",
+    "passport-vkontakte": "^0.5.0",
     "passport-yandex": "^0.0.5",
     "validator": "^13.11.0",
     "winston": "^3.11.0"

@@ -148,3 +148,8 @@
   level: 'error',
   timestamp: '2024-03-12T08:04:24.871Z'
 }
+{
+  message: 'Unknown authentication strategy "vkontakte"',
+  level: 'error',
+  timestamp: '2024-03-18T08:32:17.517Z'
+}
