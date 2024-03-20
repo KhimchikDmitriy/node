@@ -1,23 +1,24 @@
-import { Strategy as GitHubStrategy } from "passport-github2";
+import { Strategy as GitHubStrategy } from "passport-github";
+import logger from "../logger/index.js";
+import "dotenv/config.js";
 
 function passportFunctionGithub(passport) {
   passport.serializeUser(function (user, doneGT) {
     console.log(user);
-    console.log("Github serialize");
     const email = function () {
       if (user.provider == "google") {
         return user.email;
       } else if (user.provider == "yandex") {
         return user.emails[0].value;
       } else if (user.provider == "github") {
-        return user._json.email ? user._json.email : "github.email@gmail.com";
+        return user.username ? user.username : "github.email@gmail.com";
       } else {
-        return "vk.email@gmail.com";
+        return user.displayName ? user.displayName : "vk.email@gmail.com";
       }
     };
     const newUser = {
       id: user.id,
-      username: user.displayName,
+      name: user.username,
       email: email(),
     };
     return doneGT(null, newUser);
@@ -30,9 +31,10 @@ function passportFunctionGithub(passport) {
       {
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: "http://127.0.0.1:80/auth/github/callback",
+        callbackURL: "http://localhost:80/auth/github/callback",
       },
       function (accessToken, refreshToken, profile, doneGT) {
+        logger.info(`Получили профиль от GitHub ${profile}`);
         return doneGT(null, profile);
       }
     )

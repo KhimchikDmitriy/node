@@ -23,12 +23,9 @@ connection.query(sql, (err) => {
 
 const addPost = (req, res, next) => {
   const { title, body } = req.body;
-  if (req.session.passport.user.diasplayName) {
-    const author = req.session.passport.user.diasplayName;
-  } else {
-    const author = req.session.name;
-  }
-  const author = req.session.name;
+  const author = req.session.email
+    ? req.session.email
+    : req.session.passport.user.email;
 
   if (!title || !body) {
     console.log("! ! !");

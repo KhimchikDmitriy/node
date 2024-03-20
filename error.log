@@ -263,3 +263,39 @@
   level: 'error',
   timestamp: '2024-03-18T16:32:23.294Z'
 }
+{
+  message: 'read ECONNRESET',
+  level: 'error',
+  timestamp: '2024-03-18T18:27:36.676Z'
+}
+{
+  message: 'C:\\нечто\\K\\работы\\node\\views\\entries.ejs:11\n' +
+    '    9| <body>\r\n' +
+    '    10|     <div class="container">\r\n' +
+    " >> 11| <%- include ('./partials/menu') %>\r\n" +
+    '    12| <% entries.posts.forEach((entry)=>{ %>\r\n' +
+    '    13|         <div class="card-body ">\r\n' +
+    '    14|         <p><%= entry.author %> \r\n' +
+    '\n' +
+    'C:\\нечто\\K\\работы\\node\\views\\partials\\menu.ejs:6\n' +
+    '    4|     <div id="menu">\r\n' +
+    '    5|       <%# меню пользователей выполнивших вход%>\r\n' +
+    ' >> 6|       <span class="name"><%= user.email || res.locals.user %> </span> <%#\r\n' +
+    '    7|       user.name для браузера то, что пользователь послал в requeste%>\r\n' +
+    '    8|       <a class="btn btn-outline-success" href="/new" aria-current="page"\r\n' +
+    '    9|         >Создать пост<span class="visually-hidden">(current)</span></a\r\n' +
+    '\n' +
+    'res is not defined',
+  level: 'error',
+  timestamp: '2024-03-18T18:32:28.689Z'
+}
+{
+  message: 'locals is not defined',
+  level: 'error',
+  timestamp: '2024-03-18T18:33:22.402Z'
+}
+{
+  message: 'locals is not defined',
+  level: 'error',
+  timestamp: '2024-03-18T18:34:12.346Z'
+}
