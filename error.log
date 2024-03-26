@@ -299,3 +299,13 @@
   level: 'error',
   timestamp: '2024-03-18T18:34:12.346Z'
 }
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-26T06:22:37.803Z'
+}
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-26T06:23:30.248Z'
+}

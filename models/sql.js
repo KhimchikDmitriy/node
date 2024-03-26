@@ -1,8 +1,8 @@
-import mysql from "mysql";
+import mysql2 from "mysql2";
 import "dotenv/config.js";
 import logger from "../logger/index.js";
 
-const connection = mysql.createConnection({
+const connection = mysql2.createConnection({
   host: "sql11.freemysqlhosting.net",
   port: "3306",
   user: process.env.MYSQL_USER,

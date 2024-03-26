@@ -58,10 +58,10 @@ app.use(user_session);
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-passportFunctionVK(passport);
-// passportFunctionYandex(passport);
-// passportFunctionGoogle(passport);
-// passportFunctionGithub(passport);
+// passportFunctionVK(passport);
+passportFunctionYandex(passport);
+passportFunctionGoogle(passport);
+passportFunctionGithub(passport);
 app.use(myRoutes);
 
 app.listen(port, () => {
