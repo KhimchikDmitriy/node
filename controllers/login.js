@@ -1,5 +1,6 @@
 import logger from "../logger/index.js";
-import User from "../models/user.js";
+// import User from "../models/user.js";
+import User from "../models/db.js";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 
@@ -8,8 +9,21 @@ const form = (req, res) => {
   console.log("...");
   console.log("заход на /login");
 };
+
+async function authenticate(dataForm, cb) {
+  try {
+    const user = await User.findOne({ where: { email: dataForm.email } });
+    if (!user) return cb();
+    if (dataForm.password === user.password) {
+      return cb(null, user);
+    } else return cb();
+  } catch (err) {
+    return cb(err);
+  }
+}
+
 const submit = (req, res, next) => {
-  User.authenticate(req.body.loginForm, (err, data) => {
+  authenticate(req.body.loginForm, (err, data) => {
     //data is user
     if (err) return next(err);
     if (!data) {

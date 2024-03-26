@@ -309,3 +309,23 @@
   level: 'error',
   timestamp: '2024-03-26T06:23:30.248Z'
 }
+{
+  message: "Cannot read properties of undefined (reading '0')",
+  level: 'error',
+  timestamp: '2024-03-26T06:28:07.107Z'
+}
+{
+  message: 'err is not defined',
+  level: 'error',
+  timestamp: '2024-03-26T08:10:42.037Z'
+}
+{
+  message: 'Entry.selectAll is not a function',
+  level: 'error',
+  timestamp: '2024-03-26T08:11:06.830Z'
+}
+{
+  message: 'Entry.findAll is not a function',
+  level: 'error',
+  timestamp: '2024-03-26T08:11:27.525Z'
+}
